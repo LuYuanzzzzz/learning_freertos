@@ -32,7 +32,7 @@ static void Send_Task(void)
                 pinstate = KEY_Proc (0);
                 if(pinstate == BTN1_PRES){
                         xReturn = xSemaphoreGive(BinarySem_Handle);
-                        if(pdPASS == xReturn)
+                        if(pdTRUE == xReturn)
                                 u1_printf(" BinarySem_Handle 二值信号量释放成功！\r\n");
                         else
                                 u1_printf(" BinarySem_Handle 二值信号量释放失败！\r\n");
@@ -55,7 +55,7 @@ static void AppTaskCreate(void)
                                 (const char*)"Receive_Task",
                                 (const configSTACK_DEPTH_TYPE)configMINIMAL_STACK_SIZE,
                                 (void*)NULL,
-                                (UBaseType_t)2,
+                                (UBaseType_t)3,
                                 (TaskHandle_t*)&Receive_Task_Handle);
         if(pdPASS == xReturn)
                 u1_printf("创建 Receive_Task 任务成功！\r\n");
@@ -64,7 +64,7 @@ static void AppTaskCreate(void)
                                 (const char*)"Send_Task",
                                 (const configSTACK_DEPTH_TYPE)configMINIMAL_STACK_SIZE,
                                 (void*)NULL,
-                                (UBaseType_t)3,
+                                (UBaseType_t)2,
                                 (TaskHandle_t*)&Send_Task_Handle);
         if(pdPASS == xReturn)
                 u1_printf("创建 Send_Task 任务成功！\r\n");
