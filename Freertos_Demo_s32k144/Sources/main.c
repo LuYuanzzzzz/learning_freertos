@@ -17,7 +17,7 @@
 #include "delay.h"
 #include "uart.h"
 #include "key.h"
-#include "freertos_task_notify.h"
+#include "freertos_heap_test.h"
 
 volatile int exit_code = 0;
 #define PEX_RTOS_START rtos_start
@@ -25,7 +25,7 @@ volatile int exit_code = 0;
 /*创建任务*/
 void rtos_start(void)
 {
-        rtos_start_task_notify();
+        rtos_start_heap_test();
 }
 
 
